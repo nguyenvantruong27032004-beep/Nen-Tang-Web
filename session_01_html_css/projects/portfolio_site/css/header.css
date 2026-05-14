@@ -1,1 +1,178 @@
-/* header.css — Sẽ được điền trong Lần 2 */
+/* =======================================================
+   header.css — Site Header + Navigation
+   Session 01 · Bài 1.1 · Header + Hero Section
+   ======================================================= */
+
+/* ── 1. Header Base ────────────────────────────────────── */
+#site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: var(--z-header);
+    animation: slideDown var(--transition-slow) ease forwards;
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Scrolled state — added by JS */
+#site-header.scrolled {
+    background: var(--header-bg-scrolled);
+    box-shadow: var(--shadow-lg);
+}
+
+/* ── 2. Inner Layout ───────────────────────────────────── */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--space-6);
+}
+
+/* ── 3. Logo ───────────────────────────────────────────── */
+.logo {
+    font-size: var(--text-xl);
+    font-weight: var(--fw-extra);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+    opacity: 0.85;
+}
+
+/* ── 4. Navigation ─────────────────────────────────────── */
+#main-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.nav-link {
+    position: relative;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    transition: color var(--transition-fast), background var(--transition-fast);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    transform: translateX(-50%);
+    transition: width var(--transition-base);
+}
+
+.nav-link:hover {
+    color: var(--color-light);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: calc(100% - var(--space-8));
+}
+
+.nav-link.active {
+    color: var(--color-light);
+}
+
+/* ── 5. Hamburger Toggle (CSS-only) ────────────────────── */
+.menu-toggle {
+    display: none; /* Hidden checkbox */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+    z-index: calc(var(--z-header) + 1);
+}
+
+.hamburger:hover {
+    background: rgba(99, 102, 241, 0.15);
+}
+
+.hamburger-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-light);
+    border-radius: var(--radius-full);
+    transition: transform var(--transition-base), opacity var(--transition-fast);
+    transform-origin: center;
+}
+
+/* Hamburger → X when checked */
+.menu-toggle:checked ~ .header-inner .hamburger .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle:checked ~ .header-inner .hamburger .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.menu-toggle:checked ~ .header-inner .hamburger .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── 6. Responsive — Mobile ────────────────────────────── */
+@media (max-width: 767px) {
+    .hamburger {
+        display: flex;
+    }
+
+    #main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-6);
+        background: rgba(15, 23, 42, 0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transform: translateX(100%);
+        transition: transform var(--transition-slow);
+        z-index: var(--z-header);
+    }
+
+    .menu-toggle:checked ~ .header-inner #main-nav {
+        transform: translateX(0);
+    }
+
+    .nav-link {
+        font-size: var(--text-xl);
+        padding: var(--space-4) var(--space-8);
+    }
+}
