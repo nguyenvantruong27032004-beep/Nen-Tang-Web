@@ -1,1 +1,224 @@
-/* hero.css — Sẽ được điền trong Lần 3 */
+/* =======================================================
+   hero.css — Hero Section Styles
+   Session 01 · Bài 1.1 · Header + Hero Section
+   ======================================================= */
+
+/* ── 1. Hero Base ──────────────────────────────────────── */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--gradient-hero);
+    overflow: hidden;
+    padding-top: var(--header-height); /* offset for fixed header */
+}
+
+/* ── 2. Hero Content ───────────────────────────────────── */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    padding-inline: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+/* ── 3. Greeting Badge ─────────────────────────────────── */
+.hero-greeting {
+    display: inline-block;
+    font-size: var(--text-lg);
+    font-weight: var(--fw-medium);
+    color: var(--color-accent);
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-full);
+    letter-spacing: 0.04em;
+    animation: fadeInUp 0.6s ease both;
+    animation-delay: 0.1s;
+}
+
+/* ── 4. Hero Title ─────────────────────────────────────── */
+.hero-title {
+    font-size: clamp(var(--text-4xl), 6vw, var(--text-hero));
+    font-weight: var(--fw-extra);
+    line-height: 1.1;
+    color: var(--color-light);
+    letter-spacing: -0.03em;
+    animation: fadeInUp 0.6s ease both;
+    animation-delay: 0.25s;
+}
+
+.hero-title .highlight {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── 5. Hero Subtitle ──────────────────────────────────── */
+.hero-subtitle {
+    font-size: clamp(var(--text-base), 2.5vw, var(--text-xl));
+    font-weight: var(--fw-normal);
+    color: var(--color-text-muted);
+    line-height: var(--lh-loose);
+    animation: fadeInUp 0.6s ease both;
+    animation-delay: 0.4s;
+}
+
+/* ── 6. CTA Buttons ────────────────────────────────────── */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    animation: fadeInUp 0.6s ease both;
+    animation-delay: 0.55s;
+}
+
+.cta-button,
+.cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--text-base);
+    font-weight: var(--fw-semi);
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition:
+        transform var(--transition-base),
+        box-shadow var(--transition-base),
+        background var(--transition-base),
+        color var(--transition-base);
+}
+
+/* Primary CTA */
+.cta-button {
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-glow);
+    animation: pulse-glow 3s ease infinite;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 50px rgba(99, 102, 241, 0.6);
+    animation: none;
+}
+
+.cta-button:active {
+    transform: translateY(-1px) scale(1.01);
+}
+
+/* Secondary CTA */
+.cta-secondary {
+    background: transparent;
+    color: var(--color-light);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+/* ── 7. Scroll Indicator ───────────────────────────────── */
+.scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    opacity: 0.5;
+    animation: fadeIn 1s ease both, scroll-bounce 2s ease infinite;
+    animation-delay: 1s, 2s;
+    cursor: pointer;
+}
+
+.scroll-dot {
+    width: 28px;
+    height: 46px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 14px;
+    position: relative;
+}
+
+.scroll-dot::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    animation: scroll-bounce 2s ease infinite;
+}
+
+/* ── 8. Decorative Background Shapes ──────────────────── */
+.hero-bg-shape {
+    position: absolute;
+    border-radius: var(--radius-full);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-bg-shape--1 {
+    width: 600px;
+    height: 600px;
+    background: rgba(99, 102, 241, 0.2);
+    top: -150px;
+    right: -150px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.hero-bg-shape--2 {
+    width: 500px;
+    height: 500px;
+    background: rgba(139, 92, 246, 0.15);
+    bottom: -100px;
+    left: -100px;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+/* ── 9. Responsive ─────────────────────────────────────── */
+@media (max-width: 767px) {
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .cta-button,
+    .cta-secondary {
+        width: 100%;
+        padding: var(--space-4) var(--space-6);
+    }
+
+    .hero-bg-shape--1 {
+        width: 350px;
+        height: 350px;
+    }
+
+    .hero-bg-shape--2 {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-greeting {
+        font-size: var(--text-base);
+    }
+}
