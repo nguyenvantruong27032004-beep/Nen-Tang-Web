@@ -1,1 +1,192 @@
-/* about.css */
+/* =======================================================
+   about.css — About Section Styles
+   Session 01 · Bài 1.2 · About + Skills Section
+   ======================================================= */
+
+/* ── 1. Section Common Utilities ──────────────────────── */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-16);
+}
+
+.section-label {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--fw-semi);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+}
+
+.section-title {
+    font-size: clamp(var(--text-3xl), 4vw, var(--text-4xl));
+    font-weight: var(--fw-extra);
+    color: var(--color-light);
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 560px;
+    margin-inline: auto;
+}
+
+/* ── 2. About Section Base ─────────────────────────────── */
+.about-section {
+    padding-block: var(--space-20);
+    background: var(--color-dark-2);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent);
+}
+
+/* ── 3. About Grid ─────────────────────────────────────── */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* ── 4. About Image ────────────────────────────────────── */
+.about-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.about-image-wrapper {
+    width: 300px;
+    height: 300px;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    border: 3px solid rgba(99, 102, 241, 0.3);
+    box-shadow: var(--shadow-glow), var(--shadow-xl);
+    position: relative;
+    z-index: 1;
+    background: var(--color-dark);
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.about-image-wrapper:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 50px rgba(99,102,241,0.5), var(--shadow-xl);
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Decorative floating box behind image */
+.about-image-decor {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: var(--radius-2xl);
+    border: 2px solid rgba(99, 102, 241, 0.2);
+    top: 16px;
+    left: calc(50% - 150px + 16px);
+    z-index: 0;
+    background: transparent;
+}
+
+/* ── 5. About Content ──────────────────────────────────── */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.about-content .lead {
+    font-size: var(--text-xl);
+    font-weight: var(--fw-light);
+    color: var(--color-light);
+    line-height: var(--lh-loose);
+}
+
+.about-content p {
+    color: var(--color-text-muted);
+    line-height: var(--lh-loose);
+    font-size: var(--text-base);
+}
+
+/* ── 6. About Stats ────────────────────────────────────── */
+.about-stats {
+    display: flex;
+    gap: var(--space-8);
+    margin-top: var(--space-4);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.stat-number {
+    font-size: var(--text-3xl);
+    font-weight: var(--fw-extra);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-weight: var(--fw-medium);
+}
+
+/* ── 7. Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-image-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-image-decor {
+        width: 200px;
+        height: 200px;
+        left: calc(50% - 100px + 12px);
+        top: 12px;
+    }
+
+    .about-stats {
+        gap: var(--space-6);
+    }
+}
+
+@media (max-width: 480px) {
+    .about-stats {
+        flex-wrap: wrap;
+        gap: var(--space-4);
+    }
+}
