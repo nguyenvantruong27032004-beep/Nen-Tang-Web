@@ -1,6 +1,6 @@
 /* =======================================================
    base.css — CSS Reset + Global Base Styles
-   Session 01 · Bài 1.1 · Header + Hero Section
+   Session 01 · Bài 1.1 + 1.2 · Header + Hero + About + Skills
    ======================================================= */
 
 /* ── 1. Modern CSS Reset ─────────────────────────────── */
@@ -57,6 +57,11 @@ html {
     -webkit-text-size-adjust: 100%;
 }
 
+/* Scale down base font on small screens */
+@media (max-width: 480px) {
+    html { font-size: 15px; }
+}
+
 body {
     font-family: var(--font-main);
     font-size: var(--text-base);
@@ -99,6 +104,13 @@ a:focus-visible {
     padding-inline: var(--space-6);
 }
 
+/* Tighter padding on mobile */
+@media (max-width: 480px) {
+    .container {
+        padding-inline: var(--space-4);
+    }
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -111,7 +123,19 @@ a:focus-visible {
     border: 0;
 }
 
-/* ── 5. Scroll-triggered fade-in animation ────────────── */
+/* ── 5. Reduce motion for accessibility ──────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ── 6. Scroll-triggered fade-in animation ────────────── */
 @keyframes fadeInUp {
     from {
         opacity: 0;
