@@ -1,1 +1,121 @@
-/* skills.css */
+/* =======================================================
+   skills.css — Skills Section with Animated Progress Bars
+   Session 01 · Bài 1.2 · About + Skills Section
+   ======================================================= */
+
+/* ── 1. Skills Section Base ────────────────────────────── */
+.skills-section {
+    padding-block: var(--space-20);
+    background: var(--color-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent);
+}
+
+/* Subtle background glow */
+.skills-section::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+/* ── 2. Skills Grid ────────────────────────────────────── */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8) var(--space-12);
+}
+
+/* ── 3. Skill Item ─────────────────────────────────────── */
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+/* ── 4. Skill Header (name + percent) ─────────────────── */
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-name {
+    font-size: var(--text-base);
+    font-weight: var(--fw-semi);
+    color: var(--color-light);
+    letter-spacing: 0.01em;
+}
+
+.skill-percent {
+    font-size: var(--text-sm);
+    font-weight: var(--fw-medium);
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── 5. Skill Bar Track ────────────────────────────────── */
+.skill-bar {
+    height: 12px;
+    background: rgba(226, 232, 240, 0.08);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── 6. Skill Progress Fill ────────────────────────────── */
+.skill-progress {
+    height: 100%;
+    width: 0;                        /* Start at 0 for animation */
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--radius-full);
+    transition: width 1s ease-out;
+    position: relative;
+}
+
+/* Animated shimmer on the bar */
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: var(--radius-full);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+/* When bar has been animated, show tip glow */
+.skill-progress.animate::after {
+    opacity: 1;
+}
+
+/* ── 7. Animated state (class toggled by JS) ───────────── */
+.skill-progress.animate {
+    /* Width is set dynamically by JS from data-width attribute */
+}
+
+/* ── 8. Responsive ─────────────────────────────────────── */
+@media (max-width: 767px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+}
