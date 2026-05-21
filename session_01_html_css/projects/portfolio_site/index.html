@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
@@ -170,13 +174,60 @@
         </section>
 
         <!-- Placeholder sections for future exercises -->
-        <section id="portfolio"
-            style="min-height:100vh; display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--color-primary);">
-            Portfolio Section — Bài 1.3</section>
-        <section id="contact"
-            style="min-height:100vh; display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--color-primary);">
-            Contact Section — Bài 1.4</section>
 
+        <!-- ===== FOOTER ===== -->
+
+        <footer class="footer">
+
+            <div class="container">
+
+                <div class="footer-content">
+
+                    <div class="footer-box">
+
+                        <h3 class="footer-logo">
+                            TRƯỜNG NGUYỄN
+                        </h3>
+
+                    </div>
+
+                    <div class="footer-box">
+
+                        <p class="footer-tagline">
+                            Building modern digital experiences
+                        </p>
+
+                    </div>
+
+                    <div class="footer-box social-links">
+
+                        <a href="https://github.com/" class="social-link">
+                            GitHub
+                        </a>
+
+                        <a href="https://linkedin.com/" class="social-link">
+                            LinkedIn
+                        </a>
+
+                        <a href="mailto:nguyenvantruong27032004@gmail.com" class="social-link">
+                            Email
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="footer-bottom">
+
+                    <p>
+                        © 2026 Nguyễn Văn Trường. All rights reserved.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </footer>
     </main>
 
     <!-- ===== SCRIPTS ===== -->
@@ -189,48 +240,129 @@
 
     <div class="container">
 
-        <h2>My Portfolio</h2>
+        <h2>Bộ sưu tập của tôi</h2>
 
         <div class="portfolio-filters">
 
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Web</button>
-            <button class="filter-btn">Mobile</button>
-            <button class="filter-btn">Design</button>
+            <a href="#portfolio" class="filter-btn active">Tất cả</a>
+
+            <a href="#image1" class="filter-btn">Ảnh 1</a>
+
+            <a href="#image2" class="filter-btn">Ảnh 2</a>
+
+            <a href="#image3" class="filter-btn">Ảnh 3</a>
 
         </div>
 
         <div class="portfolio-grid">
 
-            <!-- ITEM 1 -->
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/id/1015/400/300" alt="">
+            <div id="image1" class="portfolio-item">
+                <img src="./img/1111.jpg" alt="">
             </div>
 
-            <!-- ITEM 2 -->
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/id/1011/400/300" alt="">
+            <div id="image2" class="portfolio-item">
+                <img src="./img/2222.jpg" alt="">
             </div>
 
-            <!-- ITEM 3 -->
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/id/1005/400/300" alt="">
+            <div id="image3" class="portfolio-item">
+                <img src="./img/3333.jpg" alt="">
             </div>
 
-            <!-- ITEM 4 -->
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/id/1025/400/300" alt="">
+            <div id="image4" class="portfolio-item">
+                <img src="./img/4444.jpg" alt="">
             </div>
 
-            <!-- ITEM 5 -->
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/id/1035/400/300" alt="">
+            <div id="image5" class="portfolio-item">
+                <img src="./img/5555.jpg" alt="">
             </div>
 
-            <!-- ITEM 6 -->
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/id/1040/400/300" alt="">
+            <div id="image6" class="portfolio-item">
+                <img src="./img/6666.jpg" alt="">
             </div>
+        </div>
+    </div>
+</section>
+<!-- ===== CONTACT SECTION ===== -->
+
+<section id="contact" class="contact-section">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-label">Liên hệ</span>
+
+            <h2 class="section-title">Get In Touch</h2>
+
+            <p class="section-subtitle">
+                Hãy liên hệ với tôi nếu bạn muốn hợp tác hoặc trao đổi công việc
+            </p>
+
+        </div>
+
+        <div class="contact-wrapper">
+
+            <!-- CONTACT INFO -->
+
+            <div class="contact-info">
+
+                <h3>Thông Tin Liên Hệ</h3>
+
+                <p>
+                    Tôi luôn sẵn sàng trao đổi về dự án mới, cơ hội việc làm
+                    hoặc hợp tác phát triển website.
+                </p>
+
+                <div class="info-item">
+                    <span class="icon">📧</span>
+                    <span>nguyenvantruong27032004@gmail.com</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <span>Hà Nội, Việt Nam</span>
+                </div>
+
+                <div class="info-item">
+                    <span class="icon">📞</span>
+                    <span>0345323290</span>
+                </div>
+
+            </div>
+
+            <!-- CONTACT FORM -->
+
+            <form class="contact-form">
+
+                <div class="form-group">
+
+                    <label for="name">Họ và tên</label>
+
+                    <input type="text" id="name" name="name" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="email">Email</label>
+
+                    <input type="email" id="email" name="email" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="message">Tin nhắn</label>
+
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Gửi Tin Nhắn
+                </button>
+
+            </form>
 
         </div>
 
